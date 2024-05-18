@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#Author: jamiu
+#date:16th may 2024
+#version:1.0
+
+
+# Input files containing list of nodes
+   NODES_FILE=node.txt
+
+
+#log file for historical analysis
+    LOG_FILE=monitor.log
+
+
+# Email notification setting
+   EMAIL_TO=afolabibello35@gmail.com
+   EMAIL_SUBJECT="Hey, Node is unreachable"
+
+
+#Function to ping nodes and log results
+   ping_nodes() {
+        while IFS=read -r node;do
+             if ping -c 1 W 1"node.txt"&> /dev/null;
+
+then
+       status="reacheable"
+    else
+       status="unreacheable"
+    fi
+  done < "node.txt"
+}
